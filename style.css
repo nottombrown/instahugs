@@ -1,0 +1,23 @@
+
+body{
+  background-color:black;
+}         
+
+#container{
+  width:1400px;  
+  margin:0 auto;
+  
+}
+.smile-container{  
+  display:inline-block;
+  float:left;
+  overflow:hidden;
+  width:276px;
+  height:266px;
+  margin:2px;
+}          
+.instagram{
+  position:relative;
+  left:-16px;
+  top:-21px;
+}       

@@ -10,6 +10,4 @@
         <!-- Placeholder for whatever we put on the back    -->
       </div>    
     </div>
-  </div>
-  
-             
+  </div>  

@@ -10,10 +10,7 @@
                                                                
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>  --> 
-  
                                               
-  <script src="/static/jquery-1.5.min.js"></script>  
-  <script src="/static/main.js"></script>                
 
 </head>
 
@@ -32,5 +29,8 @@
     ${next.body()}
 
   
-</body>
+</body> 
+
+<script src="/static/jquery-1.5.min.js"></script>  
+<script src="/static/main.js"></script>
 </html>

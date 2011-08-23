@@ -30,9 +30,8 @@ def get_hugs_view(request):
 def hugs_view(request): 
     # For now we 
     rs = request.db.execute("select id, shortcode from hugs")
-    hugs = [row[1] for row in rs.fetchall()]
-    return hugs
-    return {}
+    shortcodes = [row[1] for row in rs.fetchall()]
+    return {"shortcodes":str(shortcodes)}    
 
 
 

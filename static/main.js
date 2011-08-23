@@ -1,37 +1,6 @@
 $(function(){ 
     
-    var nextTestImageURL = function(){  
-        
-        // we keep a buffer of 50 total hugs
-        // replenish the buffer when it goes below 25
-        var shortcodes = new Array("I3J6P",
-                                    "I3Q1Y",
-                                    "I3QOm",
-                                    "I3PTL",
-                                    "I3FCW",                    
-                                    "I3ST-",
-                                    "I3QUN",
-                                    "I3QSi",
-                                    "IxPf7",
-                                    "I3QB3",
-                                    "I3Pkq",
-                                    "GKu-T",
-                                    "I3Ku8",
-                                    "I3FdC",
-                                    "I3Hhp",
-                                    "I24pE",
-                                    "I26r8",
-                                    "I2ZMH",
-                                    "I23_Z",
-                                    "I23cH");              
-        var _index = 0; 
-        
-        return function(){                                           
-            var url = "http://instagr.am/p/"+shortcodes[_index]+"/media/?size=m";
-            _index++;
-            return url
-        }
-    }(); 
+
     
     
     
@@ -68,19 +37,36 @@ $(function(){
     function replaceHug(oldHug, newShortcode){
         
     }                                                  
-
-    // Initialize width 
-    var rows = 5;
-    var cols = 3;
+    
+    var initialize = function(){
+        // Initialize width 
+        var rows = 5;
+        var cols = 3;
                     
-    for (i=1;i<=rows;i++){
-        for (j=1;j<=cols;j++){     
-            newHug();    
+        for (i=1;i<=rows;i++){
+            for (j=1;j<=cols;j++){     
+                newHug();    
             
+            }
         }
-    }
+    }     
 
-
-
+    var nextTestImageURL = function(){  
+        
+        // we keep a buffer of 50 total hugs
+        // replenish the buffer when it goes below 25
+        var shortcodes
+        $.get("get_hugs", function(data){   
+            shortcodes = data;   
+            initialize()
+        });             
+        var _index = 0; 
+        
+        return function(){                                           
+            var url = "http://instagr.am/p/"+shortcodes[_index]+"/media/?size=m";
+            _index++;
+            return url
+        }
+    }();
 
 }); 

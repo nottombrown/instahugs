@@ -8,6 +8,8 @@ from pyramid.events import ApplicationCreated
 from pyramid.httpexceptions import HTTPFound
 from pyramid.session import UnencryptedCookieSessionFactoryConfig
 from pyramid.view import view_config
+   
+import json
 
 from paste.httpserver import serve
 import sqlite3
@@ -18,17 +20,19 @@ log = logging.getLogger(__file__)
 here = os.path.dirname(os.path.abspath(__file__))
 
 # views
-@view_config(route_name='list', renderer='list.mako')
-def list_view(request):
-    rs = request.db.execute("select id, name from tasks where closed = 0")
-    tasks = [dict(id=row[0], name=row[1]) for row in rs.fetchall()]
-    return {'tasks': tasks}
+@view_config(route_name='get_hugs', renderer='json')
+def get_hugs_view(request):
+    rs = request.db.execute("select id, shortcode from hugs")
+    hugs = [row[1] for row in rs.fetchall()]
+    return hugs
   
 @view_config(route_name='hugs', renderer='hugs.mako')
-def list_view(request):
-    rs = request.db.execute("select id, name from tasks where closed = 0")
-    tasks = [dict(id=row[0], name=row[1]) for row in rs.fetchall()]
-    return {'tasks': tasks}
+def hugs_view(request): 
+    # For now we 
+    rs = request.db.execute("select id, shortcode from hugs")
+    hugs = [row[1] for row in rs.fetchall()]
+    return hugs
+    return {}
 
 
 
@@ -92,9 +96,8 @@ if __name__ == '__main__':
     config = Configurator(settings=settings, session_factory=session_factory)
     # routes setup
     config.add_route('list', '/')  
-    config.add_route('hugs', '/hugs')    
-    config.add_route('new', '/new')
-    config.add_route('close', '/close/{id}')
+    config.add_route('hugs', '/hugs')  
+    config.add_route('get_hugs', '/get_hugs')        
     # static view setup
     config.add_static_view('static', os.path.join(here, 'static'))
     # scan for @view_config and @subscriber decorators

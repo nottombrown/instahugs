@@ -35,7 +35,7 @@ def hugs_view(request):
 
 
 
-@view_config(route_name='new', renderer='new.mako')
+@view_config(route_name='new_template', renderer='new.mako')
 def new_view(request):
     if request.method == 'POST':
         if request.POST.get('name'):
@@ -47,6 +47,15 @@ def new_view(request):
         else:
             request.session.flash('Please enter a name for the task!')
     return {}
+
+@view_config(route_name="add_hug")
+def add_hug_view(request): 
+    shortcode = "test"
+    request.db.execute('insert into hugs (shortcode) values (?)',
+                       [shortcode])
+    request.db.commit()     
+                                     
+
 
 @view_config(route_name='close')
 def close_view(request):
@@ -94,9 +103,9 @@ if __name__ == '__main__':
     # configuration setup
     config = Configurator(settings=settings, session_factory=session_factory)
     # routes setup
-    config.add_route('list', '/')  
-    config.add_route('hugs', '/hugs')  
-    config.add_route('get_hugs', '/get_hugs')        
+    config.add_route('hugs', '/')           
+    config.add_route('get_hugs', '/get_hugs') 
+    config.add_route('add_hug', '/add_hug')    
     # static view setup
     config.add_static_view('static', os.path.join(here, 'static'))
     # scan for @view_config and @subscriber decorators

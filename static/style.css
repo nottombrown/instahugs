@@ -47,7 +47,8 @@ body{
 			width: inherit;
 			height: inherit;         
 			background: #777;
-			text-align: center;
+			text-align: center;   
+			overflow:hidden;
  
       box-shadow: 0;
       -moz-box-shadow: 0;
@@ -84,7 +85,8 @@ body{
 			z-index: 800;
 			width: inherit;
 			height: inherit;        
-			background: #888;                           
+			background: #888;   
+			overflow:hidden;                        
 			
 			-webkit-transform: rotateY(-180deg);
 			-webkit-transform-style: preserve-3d;

@@ -3,7 +3,7 @@
                 
   <div id="container"> 
     <div class="click panel">
-      <div class="smile-container front">
+      <div class="hug-container front">
         <img class="instagram" src="">   
       </div> 
       <div class="back">              

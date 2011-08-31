@@ -1,14 +1,16 @@
 
 body{
-  background-color:#000;
+  background-color:#500;
 }         
 
-#container{
+#container{         
+  background-color:#050;   
   width:1400px;  
   margin:0 auto;
   
 }
-.hug-container{  
+.hug-container{    
+  background-color:#555;  
   display:inline-block;
   float:left;
   overflow:hidden;
@@ -60,7 +62,8 @@ body{
 			-webkit-transition: all .4s ease-in-out;
 		}
 		.panel.flip .front {
-			z-index: 900;       
+			z-index: 900;    
+      background-color:#FFF;    
  
 			-webkit-transform: rotateY(180deg);
 		   
@@ -74,7 +77,8 @@ body{
       z-index:801;   
 		}     
 		
-		.panel .back {
+		.panel .back {   
+		  background-color:#888;   
 			float: none;
 			position: absolute;
 			top: 0;
